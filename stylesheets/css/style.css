@@ -7,6 +7,33 @@ body
   font-weight:100;
 }
 
+a {
+    color: white;
+    text-decoration: none;
+}
+
+
+.hero{
+    height: 300px;
+    width: 100%;
+    background-size: 100%;
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+    background: url("../../images/header_image.jpg");
+}
+
+.hero{
+    color: white;
+    padding-left: 10px;
+    margin-bottom: 20px;
+}
+
+.register{
+    background-color:black;
+    padding: 10px;
+    display:table;
+}
+
 .container
 {
   display: flex;
@@ -44,10 +71,6 @@ body
     color:white;
 }
 
-.back a {
-    color: white;
-    text-decoration: none;
-}
 
 
 /*.box:nth-of-type(2n) .front {
