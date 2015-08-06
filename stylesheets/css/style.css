@@ -59,6 +59,7 @@ a {
   width: 360px;
   height: 250px;
   text-transform: uppercase;
+  text-align: center;
 }
 
 .front, .back {
