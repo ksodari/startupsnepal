@@ -1,0 +1,116 @@
+
+body
+{
+  margin: 0 auto;
+  max-width:1199px;
+  font-family : "Segoe UI Light", sans-serif;
+  font-weight:100;
+}
+
+.container
+{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.center-align {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.column-wrap {
+    display: flex;
+    flex-direction: column;
+}
+
+
+.box
+{
+  width: 360px;
+  height: 360px;
+  text-transform: uppercase;
+}
+
+.front, .back {
+    border:1px solid #808080;
+  border-width: thin;
+}
+
+.back {
+    background: #C75974;
+    color:white;
+}
+
+
+/*.box:nth-of-type(2n) .front {
+    background: #4e5ae4;
+}*/
+
+
+/* entire container, keeps perspective */
+.flip-container {
+	perspective: 1000;
+	transform-style: preserve-3d;
+}
+	/*  UPDATED! flip the pane when hovered */
+	.flip-container:hover .back {
+		transform: rotateY(0deg);
+	}
+	.flip-container:hover .front {
+	    transform: rotateY(180deg);
+	}
+
+.flip-container, .front, .back {
+    width: 360px;
+    height:360px;
+}
+
+/* flip speed goes here */
+.flipper {
+	transition: 0.7s;
+	transform-style: preserve-3d;
+	position: relative;
+}
+
+/* hide back of pane during swap */
+.front, .back {
+	backface-visibility: hidden;
+	transition: 0.7s;
+	transform-style: preserve-3d;
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+
+/*  UPDATED! front pane, placed above back */
+.front {
+	z-index: 2;
+	transform: rotateY(0deg);
+}
+
+/* back, initially hidden pane */
+.back {
+	transform: rotateY(-180deg);
+}
+
+/* 
+	Some vertical flip updates 
+*/
+.vertical.flip-container {
+	position: relative;
+}
+
+	.vertical .back {
+		transform: rotateX(180deg);
+	}
+
+	.vertical.flip-container:hover .back {
+	    transform: rotateX(0deg);
+	}
+
+	.vertical.flip-container:hover .front {
+	    transform: rotateX(180deg);
+	}
