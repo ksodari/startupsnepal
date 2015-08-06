@@ -44,6 +44,11 @@ body
     color:white;
 }
 
+.back a {
+    color: white;
+    text-decoration: none;
+}
+
 
 /*.box:nth-of-type(2n) .front {
     background: #4e5ae4;

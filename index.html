@@ -3,76 +3,62 @@
      <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Startups Nepal - A Directory of Nepalese Tech Startups</title>
     <link rel="stylesheet" type="text/css" href="stylesheets/css/style.css" />
-  </head>
+    <script src="js/handlebars/handlebars.js"></script>
+    <script src="js/tabletop/src/tabletop.js"></script>
+    <script src="js/jquery/jquery.js"></script>
+      <script>
+
+          var spreadsheet_key = "1Ec9Q9CD6MvRSRDtXcg7oIy9F955Llkm2_qcTmfI99Ew";
+
+          function init() {
+              Tabletop.init({
+                  key: spreadsheet_key,
+                  callback: showInfo,
+                  simpleSheet: true
+              });
+
+              
+          }
+
+          function showInfo(data) {
+              var source = $("#startup-template").html();
+              var template = Handlebars.compile(source);
+              $.each(data, function (i, startup) {
+                  var html = template(startup);
+                  $(".container").append(html);
+              });
+          }
+
+          init();
+
+      </script>
+      </head>
   <body>
+
+      <script id="startup-template" type="text/x-handlebars-template">
+          <div class="box">
+              <div class="flip-container" ontouchstart="this.classList.toggle('hover');">
+                  <div class="flipper">
+                      <div class="front center-align">
+                          <img src="{{[Logo URL]}}" height="60" />
+                      </div>
+                      <a href="{{[Website URL]}}">
+                          <div class="back center-align column-wrap">
+                              <h2>{{[Product Name]}}</h2>
+                              <h5>{{[Product Tagline]}}</h5>
+                              <h6>
+                                  VISIT WEBSITE
+                              </h6>
+                          </div>
+                      </a>
+                  </div>
+              </div>
+          </div>
+      </script>
+    
+
       <div class="container">
-          <div class="box">
-              <div class="flip-container" ontouchstart="this.classList.toggle('hover');">
-                  <div class="flipper">
-                      <div class="front center-align">
-                          <img src="images/logos/parewalabs.png" height="60" />
-                      </div>
-                      <div class="back center-align column-wrap">
-                          <h2>Adhuro</h2>
-                          <h5>Adhuro is a place to write content and earn money</h5>
-                          <h6>VISIT WEBSITE</h6>
-                      </div>
-                  </div>
-              </div>
-          </div>
-          <div class="box">
-              <div class="flip-container" ontouchstart="this.classList.toggle('hover');">
-                  <div class="flipper">
-                      <div class="front center-align">
-                          <img src="images/logos/janakitech.png" height="60" />
-                      </div>
-                      <div class="back center-align">
-                          Back face
-                      </div>
-                  </div>
-              </div>
-          </div>
-          <div class="box">
-              <div class="flip-container" ontouchstart="this.classList.toggle('hover');">
-                  <div class="flipper">
-                      <div class="front center-align">
-                          <img src="images/logos/karkhana.png" height="60" />
-                      </div>
-                      <div class="back center-align">
-                          Back face
-                      </div>
-                  </div>
-              </div>
-          </div>
-          <div class="box">
-              <div class="flip-container" ontouchstart="this.classList.toggle('hover');">
-                  <div class="flipper">
-                      <div class="front center-align">
-                          <img src="images/logos/gogazzab.png" height="60" />
-                      </div>
-                      <div class="back center-align">
-                          Back face
-                      </div>
-                  </div>
-              </div>
-          </div>
-          <div class="box">
-              <div class="flip-container" ontouchstart="this.classList.toggle('hover');">
-                  <div class="flipper">
-                      <div class="front center-align">
-                          <img src="images/logos/sasto-deal-logo.png" height="60" />
-                      </div>
-                      <div class="back center-align">
-                          Back face
-                      </div>
-                  </div>
-              </div>
-          </div>
-          
       </div>      
-      <!--<img src="images/logos/nlocate-logo-white-68x68.png" />
-      <img src="images/logos/nlocate.png" />
-      
-      <img src="images/logos/yellownepal.png" />-->
+
   </body>
 </html>
