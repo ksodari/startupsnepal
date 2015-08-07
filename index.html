@@ -40,7 +40,7 @@
               <div class="flip-container" ontouchstart="this.classList.toggle('hover');">
                   <div class="flipper">
                       <div class="front center-align">
-                          <img src="{{[Logo URL]}}" height="75" />
+                          <img src="{{[Logo URL]}}" height="{{#if Height}}{{Height}}{{else}}75{{/if}}" />
                       </div>
                       <a href="{{[Website URL]}}">
                           <div class="back center-align column-wrap">
