@@ -11,11 +11,17 @@ h3 {
       color: #3a3a3a;
       text-transform: lowercase;
       font-size: 1.6em;
+      margin-top:0;
+      margin-bottom: 2px;
 }
 
-a {
-  
+.hero a {
+    /*position:absolute;
+    top:250px;*/
+    color: white;
     text-decoration: none;
+    padding: 10px;
+    background-color: #4169e1;
 }
 
 
