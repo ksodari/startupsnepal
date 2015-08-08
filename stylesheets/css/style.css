@@ -5,6 +5,11 @@ body
   /*max-width:1080px;*/
   font-family : "Open Sans Light", sans-serif,;
   font-weight: 100;
+  overflow-x: hidden;
+}
+
+img {
+    max-width: 100%;
 }
 
 h3 {
@@ -27,7 +32,6 @@ h3 {
 
 .hero{
     height: 300px;
-    width: 100%;
     background-size: 100%;
     background-position: 50% 50%;
     background-repeat: no-repeat;
@@ -73,6 +77,19 @@ h3 {
   text-align: center;
 }
 
+@media only screen
+and (max-width : 360px) {
+
+    .box {
+        max-width: 100vw;
+    }
+    .flip-container, .front, .back {
+        max-width: 100vw;
+        border-left: none;
+        border-right: none;
+    }
+}
+
 .front, .back {
     border:1px solid #808080;
   border-width: thin;
@@ -105,6 +122,7 @@ h3 {
     width: 360px;
     height:250px;
 }
+
 
 /* flip speed goes here */
 .flipper {
