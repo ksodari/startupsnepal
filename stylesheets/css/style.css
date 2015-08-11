@@ -8,6 +8,16 @@ body
   overflow-x: hidden;
 }
 
+footer {
+    border-top: 1px solid #ddd;
+    margin-top: 10px;
+    padding-right: 20px;
+}
+
+.container {
+    min-height:100vh;
+}
+
 img {
     max-width: 100%;
 }
@@ -67,6 +77,12 @@ h3 {
 .column-wrap {
     display: flex;
     flex-direction: column;
+}
+
+.pull-right {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end
 }
 
 .box
