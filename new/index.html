@@ -97,9 +97,28 @@
                     <div class="row startup-row">
                         {{[Product Tagline]}}
                     </div>
+                    {{#if Funding}}
+                    <div class="row startup-row startup-label-header">
+                        <h4>Funding</h4>
+                        {{Funding}}
+                    </div>
+                    {{/if}}
+                    {{#if Founders}}
+                    <div class="row startup-row startup-label-header">
+                        <h4>Founders</h4>
+                        {{Founders}}
+                    </div>
+                    {{/if}}
+                    {{#if Status}}
+                    <div class="row startup-row startup-label-header">
+                        <h4>Status</h4>
+                        {{Status}}
+                    </div>
+                    {{/if}}
                     <div class="row startup-row">
                         <a href="{{[Website URL]}}">Visit Website</a>
                     </div>
+                    
                     
                 </div>
             </div>

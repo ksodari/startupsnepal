@@ -44,11 +44,16 @@ img {
 }
 
 .startup {
-    min-height: 300px;
+    min-height: 450px;
 }
 
 .startup-row {
-    padding: 5px 10px;
+    padding: 2px 10px;
+}
+
+.startup-label-header h4{
+   margin-bottom: 2px;
+   
 }
 
 .logo {
