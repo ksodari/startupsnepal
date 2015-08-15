@@ -1,12 +1,14 @@
-<html>
-  <head>
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
      <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Startups Nepal - A Directory of Nepalese Tech Startups</title>
-    <link rel="stylesheet" type="text/css" href="stylesheets/css/style.css" />
+    <title>Startups in Nepal - A Directory of Tech Startups in Nepal</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet" />
+    <link href="css/style.css" rel="stylesheet" />
     <script src="js/handlebars/handlebars.js"></script>
     <script src="js/tabletop/src/tabletop.js"></script>
     <script src="js/jquery/jquery.js"></script>
-      <script>
+    <script>
 
           var spreadsheet_key = "1Ec9Q9CD6MvRSRDtXcg7oIy9F955Llkm2_qcTmfI99Ew";
 
@@ -17,7 +19,7 @@
                   simpleSheet: true
               });
 
-              
+
           }
 
          // http://stackoverflow.com/questions/2450954/how-to-randomize-shuffle-a-javascript-array
@@ -41,66 +43,111 @@
 
           function showInfo(data) {
               shuffle(data);
-              var source = $("#startup-template").html();
-              var template = Handlebars.compile(source);
-              $.each(data, function (i, startup) {
-                  var html = template(startup);
-                  $(".container").append(html);
-              });
-          }
+              //var source = $("#startup-template").html();
+              //var template = Handlebars.compile(source);
+              //$.each(data, function (i, startup) {
+              //    var html = template(startup);
+              //    $(".startups-list").append(html);
+              //});
 
-          function 
+              var source_new = $("#startup-template-new").html();
+              var template_new = Handlebars.compile(source_new);
+              $.each(data, function (i, startup) {
+                  var html = template_new(startup);
+                  $("#startups").append(html);
+              });
+
+
+          }
 
           init();
 
-      </script>
-      </head>
-  <body>
+    </script>
+</head>
+<body>
+    <div class="hero column-wrap center-align">
+        <img src="images/startupsnepal_logo.png" height="200" />
+        <h3>Nepali Startups Directory</h3>
+        <a href="http://goo.gl/forms/5D1Ib9GtX2">Add Your Startup Here</a>
+    </div>
 
-      <script id="startup-template" type="text/x-handlebars-template">
-          <div class="box">
-              <div class="flip-container" ontouchstart="this.classList.toggle('hover');">
-                  <div class="flipper">
-                      <div class="front center-align">
-                          <img src="{{[Logo URL]}}" height="{{#if Height}}{{Height}}{{else}}75{{/if}}" />
-                      </div>
-                      <a href="{{[Website URL]}}">
-                          <div class="back center-align column-wrap">
-                              <h2>{{[Product Name]}}</h2>
-                              <h5>{{[Product Tagline]}}</h5>
-                              <h6>
-                                  VISIT WEBSITE
-                              </h6>
-                          </div>
-                      </a>
-                  </div>
-              </div>
-          </div>
-      </script>
-    
-      <div class="hero column-wrap center-align">
-          <img src="images/startupsnepal_logo.png" height="200" />
-          <h3>Nepali Startups Directory</h3>
-          <a href="http://goo.gl/forms/5D1Ib9GtX2">Add Your Startup Here</a>
-      </div>
+    <div class="startups-list">
+    </div>
 
-      <div class="container">
-      </div>      
-      
-      <footer class="center-align pull-right">
-          An initiative by <a href="http://parewalabs.com"><img src="images/logos/parewalabs.png" height="40"/></a>
-      </footer>
 
-      <script>
-            (function (i, s, o, g, r, a, m) {
-                i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
-                    (i[r].q = i[r].q || []).push(arguments)
-                }, i[r].l = 1 * new Date(); a = s.createElement(o),
-                m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
-            })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+    <div class="container">
+        <div class="row" id="startups">
 
-            ga('create', 'UA-66204216-1', 'auto');
-            ga('send', 'pageview');
-      </script>
-  </body>
+        </div>
+    </div>
+
+    <script id="startup-template-new" type="text/x-handlebars-template">
+
+        <div class="col-md-3">
+            <div class="panel panel-primary startup">
+                <div class="panel-heading">
+                    <h3 class="panel-title">{{[Product Name]}}</h3>
+                </div>
+                <div class="panel-body">
+                    <div class="row startup-row">
+                        <div class="logo center-align">
+                            <img src="{{[Logo URL]}}" height="{{#if NewHeight}}{{NewHeight}}{{else}}75{{/if}}" />
+                        </div>
+                    </div>
+                    <hr/>
+                    <div class="row startup-row">
+                        {{[Product Tagline]}}
+                    </div>
+                    {{#if Funding}}
+                    <div class="row startup-row startup-label-header">
+                        <h4><strong>Funding</strong></h4>
+                        {{Funding}}
+                    </div>
+                    {{/if}}
+                    {{#if Founders}}
+                    <div class="row startup-row startup-label-header">
+                        <h4><strong>Founders</strong></h4>
+                        {{Founders}}
+                    </div>
+                    {{/if}}
+                    {{#if Status}}
+                    <div class="row startup-row startup-label-header">
+                        <h4><strong>Status</strong></h4>
+                        {{Status}}
+                    </div>
+                    {{/if}}
+                    <div class="row startup-row">
+                        <a href="{{[Website URL]}}">Visit Website</a>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+
+    </script>
+
+    <script id="startup-template" type="text/x-handlebars-template">
+        <div class="box">
+            <div class="flip-container" ontouchstart="this.classList.toggle('hover');">
+                <div class="flipper">
+                    <div class="front center-align">
+                        <img src="{{[Logo URL]}}" height="{{#if Height}}{{Height}}{{else}}75{{/if}}" />
+                    </div>
+                    <a href="{{[Website URL]}}">
+                        <div class="back center-align column-wrap">
+                            <h2>{{[Product Name]}}</h2>
+                            <h5>{{[Product Tagline]}}</h5>
+                            <h6>
+                                VISIT WEBSITE
+                            </h6>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </script>
+
+
+</body>
 </html>
