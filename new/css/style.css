@@ -9,6 +9,9 @@
     flex-direction: column;
 }
 
+img {
+    max-width: 100%;
+}
 
 .hero a {
     /*position:absolute;
@@ -40,6 +43,10 @@
     display:table;
 }
 
-#startup {
-    min-height: 600px;
+.startup {
+    min-height: 300px;
+}
+
+.startup-row {
+    padding: 5px 10px;
 }

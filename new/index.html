@@ -88,8 +88,18 @@
                     <h3 class="panel-title">{{[Product Name]}}</h3>
                 </div>
                 <div class="panel-body">
-                    <div class="row"><img src="{{[Logo URL]}}" height="{{#if Height}}{{Height}}{{else}}75{{/if}}" /></div>
-                    <div class="row">{{[Product Tagline]}}</div>
+                    <div class="row startup-row">
+                        <div class="logo center-align">
+                            <img src="{{[Logo URL]}}" height="{{#if NewHeight}}{{NewHeight}}{{else}}75{{/if}}" />
+                        </div>
+                    </div>
+                    <hr/>
+                    <div class="row startup-row">
+                        {{[Product Tagline]}}
+                    </div>
+                    <div class="row startup-row">
+                        <a href="{{[Website URL]}}">Visit Website</a>
+                    </div>
                     
                 </div>
             </div>
