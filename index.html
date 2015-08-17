@@ -131,18 +131,19 @@
                     <div class="row startup-row">
                         {{[Product Tagline]}}
                     </div>
+                    {{#if Founders}}
+                    <div class="row startup-row startup-label-header">
+                        <h4><strong>Founders</strong></h4>
+                        {{Founders}}
+                    </div>
+                    {{/if}}                    
                     {{#if Funding}}
                     <div class="row startup-row startup-label-header">
                         <h4><strong>Funding</strong></h4>
                         {{Funding}}
                     </div>
                     {{/if}}
-                    {{#if Founders}}
-                    <div class="row startup-row startup-label-header">
-                        <h4><strong>Founders</strong></h4>
-                        {{Founders}}
-                    </div>
-                    {{/if}}
+                    
                     {{#if Status}}
                     <div class="row startup-row startup-label-header">
                         <h4><strong>Status</strong></h4>
