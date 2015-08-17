@@ -41,14 +41,47 @@
               return array;
           }
 
+          function numEntries(startup) {
+              var count = 0;
+              for (key in startup) {
+                  if (startup[key] != "") {
+                      count++;
+                  }
+              }
+              return count;
+          }
+
+          function arrange(data) {
+              var hashed = {};
+
+              //Create object of arrays with number of entries as key
+              for (var i = 0; i < data.length; i++) {
+                  var startup = data[i];
+                  var numberOfEntries = numEntries(startup);
+                  if (numberOfEntries in hashed) {
+                      hashed[numberOfEntries].push(startup);
+                  } else {
+                      hashed[numberOfEntries] = [];
+                      hashed[numberOfEntries].push(startup);
+                  }
+              }
+
+              //Sort keys in ascending order to give preference to startups who have provided full information
+              var entries = Object.keys(hashed);
+              entries.sort(function (a, b) { return b - a });
+
+              //Shuffle startups with same number of entries and create final listing
+              var startups = [];
+              for (i = 0; i < entries.length; i++) {
+                  var temp = shuffle(hashed[entries[i]]);
+                  startups = startups.concat(temp);
+              }
+
+              return startups;
+          }
+
           function showInfo(data) {
-              shuffle(data);
-              //var source = $("#startup-template").html();
-              //var template = Handlebars.compile(source);
-              //$.each(data, function (i, startup) {
-              //    var html = template(startup);
-              //    $(".startups-list").append(html);
-              //});
+              data = arrange(data);
 
               var source_new = $("#startup-template-new").html();
               var template_new = Handlebars.compile(source_new);
