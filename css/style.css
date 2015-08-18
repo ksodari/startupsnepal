@@ -56,6 +56,17 @@ img {
 
 }
 
+#funding {
+    position: absolute;
+    bottom : 30px;
+    right: 3px;
+    background: #F1F1F1;
+}
+
+#funding h4 {
+    margin-top: 2px;
+}
+
 .logo {
     height: 75px;
 }

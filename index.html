@@ -137,13 +137,7 @@
                         {{Founders}}
                     </div>
                     {{/if}}                    
-                    {{#if Funding}}
-                    <div class="row startup-row startup-label-header">
-                        <h4><strong>Funding</strong></h4>
-                        {{Funding}}
-                    </div>
-                    {{/if}}
-                    
+                                        
                     {{#if Status}}
                     <div class="row startup-row startup-label-header">
                         <h4><strong>Status</strong></h4>
@@ -153,6 +147,15 @@
                     <div class="row startup-row">
                         <a href="{{[Website URL]}}">Visit Website</a>
                     </div>
+
+                    {{#if Funding}}
+                    <div id="funding" class="startup-row startup-label-header">
+                        <h4><strong>Funding</strong></h4>
+                        {{Funding}}
+                    </div>
+                    {{/if}}
+
+
 
 
                 </div>
