@@ -77,7 +77,7 @@
           }
 
           var urlFriendlyName = function (name) {
-              return name.replace(" ", "_");
+              return name.split(" ").join("_");
           }
 
     </script>
@@ -163,7 +163,7 @@
             var cache = startupsNepalCache.get("allStartups");
 
             if (cache) {
-                $scope.startup = findStartupByName(cache, $routeParams.name.replace("_", " "));
+                $scope.startup = findStartupByName(cache, $routeParams.name.split("_").join(" "));
                 $('html, body').animate({
                     scrollTop: $("#startup-detail").offset().top - 10
                 }, 500);
@@ -180,7 +180,7 @@
             function showStartups(data) {
                 var allStartups = arrange(data);
                 startupsNepalCache.put("startups", allStartups);
-                var currentStartup = $routeParams.name.replace("_", " ");
+                var currentStartup = $routeParams.name.split("_").join(" ");
                 $scope.startup = findStartupByName(allStartups, currentStartup);
                 $scope.$apply();
                 $(".startup-detail-logo").height($(".startup-detail-header").height());

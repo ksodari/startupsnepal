@@ -4,33 +4,22 @@
 
             <div class="row">
 
-                <div class="col-md-3 startup-detail-logo pull-left center-align">
+                <div class="col-xs-12 col-md-3 startup-detail-logo pull-left center-align">
                     <img src="{{startup['Logo URL']}}" height="{{startup['NewHeight'] || 75}}" />
                 </div>
 
-                <div class="col-md-9 startup-detail-header">
+                <div class="col-xs-12 col-md-9 startup-detail-header">
                     <h2>{{startup['Product Name']}}</h2>
-
                     <h4>{{startup['Product Tagline']}}</h4>
                 </div>
-               
-               
-              
             </div>
 
             <hr />
-          
-           
-            
-
-           
 
             <div class="row startup-row startup-label-header" ng-hide="{{startup['Pitch'] == ''}}">
                 <h4><strong>Description</strong></h4>
                 {{startup['Pitch']}}
             </div>
-
-            
 
             <div class="row">
                 <div class="col-md-4">
