@@ -164,6 +164,9 @@
 
             if (cache) {
                 $scope.startup = findStartupByName(cache, $routeParams.name.replace("_", " "));
+                $('html, body').animate({
+                    scrollTop: $("#startup-detail").offset().top - 10
+                }, 500);
             } else {
                 Tabletop.init({
                     key: spreadsheet_key,
@@ -181,6 +184,9 @@
                 $scope.startup = findStartupByName(allStartups, currentStartup);
                 $scope.$apply();
                 $(".startup-detail-logo").height($(".startup-detail-header").height());
+                $('html, body').animate({
+                    scrollTop: $("#startup-detail").offset().top - 10
+                }, 500);
             }
         });
 
