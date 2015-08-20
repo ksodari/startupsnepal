@@ -4,6 +4,10 @@
     justify-content: center;
 }
 
+.pull-left {
+    justify-content: flex-start;
+}
+
 .column-wrap {
     display: flex;
     flex-direction: column;
@@ -14,17 +18,22 @@ img {
 }
 
 .hero a {
-    /*position:absolute;
-    top:250px;*/
     color: white;
     text-decoration: none;
     padding: 10px;
-    background-color: #4169e1;
+    background-color: #f06989;
 }
 
+.hero h1 {
+    margin: 0;
+    margin-bottom: 8px;
+    font-weight: 100;
+    font-size: 20px;
+    color: #053A96;
+}
 
 .hero{
-    height: 300px;
+    height: 220px;
     background-size: 100%;
     background-position: 50% 50%;
     background-repeat: no-repeat;
@@ -35,6 +44,18 @@ img {
     color: white;
     padding-left: 10px;
     margin-bottom: 20px;
+}
+
+.panel-heading {
+    background-color: #819cca!important;
+}
+
+.panel-primary, .panel-heading {
+    border-color: #819cca!important;
+}
+
+.panel-title {
+    font-size: 15px!important;
 }
 
 .register{
@@ -58,8 +79,8 @@ img {
 
 #funding {
     position: absolute;
-    bottom : 30px;
-    right: 3px;
+     bottom: 30px;
+    left:20px;
     background: #F1F1F1;
 }
 
@@ -67,11 +88,32 @@ img {
     margin-top: 2px;
 }
 
+#read-more {
+    position: absolute;
+     bottom : 30px;
+    right: 22px;
+  
+    height: 45px;
+    background: #f06989;
+}
+
+#read-more a{
+    display: block;
+     color: white;
+}
+
 .logo {
     height: 75px;
 }
 
+#startup-detail {
+    margin-bottom: 20px;
+}
 
 .social-media-icon {
     height: 40px;
+}
+
+.startup-detail-header h2 {
+    margin-top:0;
 }

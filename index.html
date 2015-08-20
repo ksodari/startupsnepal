@@ -72,13 +72,28 @@
               return startups;
           }
 
+          function redirectTo(productName) {
+              return "#/startup/" + urlFriendlyName(productName);
+          }
+
+          var urlFriendlyName = function (name) {
+              return name.replace(" ", "_");
+          }
+
     </script>
 </head>
 <body>
-    <div class="hero column-wrap center-align">
-        <img src="images/startupsnepal_logo.png" height="200" />
-        <h3>Nepali Startups Directory</h3>
-        <a href="http://goo.gl/forms/pcQQAMnXoO">Add Your Startup Here</a>
+    <div class="hero">
+        <div class="container">
+            
+            <div class="center-align column-wrap">
+                <img src="images/startupsnepal_logo.png" height="140" />
+                <h1>Nepali Startups Directory</h1>
+                <a id="add-startup-link" href="http://goo.gl/forms/pcQQAMnXoO">Add Your Startup Here</a>
+            </div>
+            
+           
+        </div>
     </div>
 
     <div class="startups-list">
@@ -165,15 +180,16 @@
                 var currentStartup = $routeParams.name.replace("_", " ");
                 $scope.startup = findStartupByName(allStartups, currentStartup);
                 $scope.$apply();
+                $(".startup-detail-logo").height($(".startup-detail-header").height());
             }
         });
 
        
 
         startupsNepalApp.controller('StartupsListingController', function ($scope, startupsNepalCache) {
-            $scope.urlFriendlyName = function (name) {
-                return name.replace(" ", "_");
-            }
+            $scope.redirectTo = redirectTo;
+
+            $scope.urlFriendlyName = urlFriendlyName;
 
             var cache = startupsNepalCache.get('allStartups');
 
@@ -195,6 +211,11 @@
                 $scope.$apply();
             }
         });
+        
+    </script>
+
+    <script>
+
         
     </script>
 </body>

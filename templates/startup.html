@@ -1,14 +1,14 @@
-﻿<div class="container">
+﻿<div id="startup-detail" class="container">
     <div class="row">
         <div class="col-md-8">
 
             <div class="row">
 
-                <div class="col-md-3">
+                <div class="col-md-3 startup-detail-logo pull-left center-align">
                     <img src="{{startup['Logo URL']}}" height="{{startup['NewHeight'] || 75}}" />
                 </div>
 
-                <div class="col-md-9">
+                <div class="col-md-9 startup-detail-header">
                     <h2>{{startup['Product Name']}}</h2>
 
                     <h4>{{startup['Product Tagline']}}</h4>
@@ -57,7 +57,7 @@
                 <div class="col-md-4">
                     <div class="row startup-row startup-label-header">
                         <h4><strong>Website</strong></h4>
-                        <a href="{{startup['Website URL']}}">{{startup['Website URL']}}</a>
+                        <a target="_blank" href="{{startup['Website URL']}}">{{startup['Website URL']}}</a>
                     </div>
                    
                 </div>
@@ -71,6 +71,11 @@
 
                     <div class="row startup-row">
                         <a href="mailto:{{startup['Contact Email']}}"><img class="social-media-icon" src="images/icons/email.png" /></a>
+                    </div>
+
+                    <div class="row startup-row" ng-hide="{{startup['Phone Number'] == ''}}">
+                        <img class="social-media-icon" src="../images/icons/phone.png" />
+                        {{startup['Phone Number']}}
                     </div>
                 </div>
             </div>
