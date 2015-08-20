@@ -1,0 +1,57 @@
+﻿<div class="container">
+    <div class="row" id="startups">
+
+        <div ng-repeat="startup in startups">
+            <div class="col-md-3">
+                <div class="panel panel-primary startup">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">{{startup["Product Name"]}}</h3>
+                    </div>
+                    <div class="panel-body">
+                        <div class="row startup-row">
+                            <div class="logo center-align">
+                                <img src="{{startup['Logo URL']}}" height="{{startup['NewHeight'] || 75}}" />
+                            </div>
+                        </div>
+                        <hr />
+                        <div class="row startup-row">
+                            {{startup['Product Tagline']}}
+                        </div>
+
+                        <div class="row startup-row startup-label-header" ng-hide="{{startup['Founders'] == ''}}">
+                            <h4><strong>Founders</strong></h4>
+                            {{startup['Founders']}}
+                        </div>
+
+
+
+                        <div class="row startup-row startup-label-header" ng-hide="{{startup['Status'] == ''}}">
+                            <h4><strong>Status</strong></h4>
+                            {{startup['Status']}}
+                        </div>
+
+                        <div class="row startup-row startup-label-header">
+                            
+                            <a href="#/startup/{{urlFriendlyName(startup['Product Name'])}}">Read more</a>
+                        </div>
+
+                        
+
+                        <div class="row startup-row">
+                            <a href="{{startup['Website URL']}}">Visit Website</a>
+                        </div>
+
+
+                        <div id="funding" class="startup-row startup-label-header" ng-hide="{{startup['Funding'] == ''}}">
+                            <h4><strong>Funding</strong></h4>
+                            {{startup['Funding']}}
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

@@ -8,19 +8,11 @@
     <script src="js/handlebars/handlebars.js"></script>
     <script src="js/tabletop/src/tabletop.js"></script>
     <script src="js/jquery/jquery.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular.min.js"></script>
+    <script src="https://code.angularjs.org/1.4.4/angular-route.js"></script>
     <script>
 
-          var spreadsheet_key = "1Ec9Q9CD6MvRSRDtXcg7oIy9F955Llkm2_qcTmfI99Ew";
-
-          function init() {
-              Tabletop.init({
-                  key: spreadsheet_key,
-                  callback: showInfo,
-                  simpleSheet: true
-              });
-
-
-          }
+        var spreadsheet_key = "1Ec9Q9CD6MvRSRDtXcg7oIy9F955Llkm2_qcTmfI99Ew";
 
          // http://stackoverflow.com/questions/2450954/how-to-randomize-shuffle-a-javascript-array
           function shuffle(array) {
@@ -80,21 +72,6 @@
               return startups;
           }
 
-          function showInfo(data) {
-              data = arrange(data);
-
-              var source_new = $("#startup-template-new").html();
-              var template_new = Handlebars.compile(source_new);
-              $.each(data, function (i, startup) {
-                  var html = template_new(startup);
-                  $("#startups").append(html);
-              });
-
-
-          }
-
-          init();
-
     </script>
 </head>
 <body>
@@ -107,62 +84,6 @@
     <div class="startups-list">
     </div>
 
-
-    <div class="container">
-        <div class="row" id="startups">
-
-        </div>
-    </div>
-
-    <script id="startup-template-new" type="text/x-handlebars-template">
-
-        <div class="col-md-3">
-            <div class="panel panel-primary startup">
-                <div class="panel-heading">
-                    <h3 class="panel-title">{{[Product Name]}}</h3>
-                </div>
-                <div class="panel-body">
-                    <div class="row startup-row">
-                        <div class="logo center-align">
-                            <img src="{{[Logo URL]}}" height="{{#if NewHeight}}{{NewHeight}}{{else}}75{{/if}}" />
-                        </div>
-                    </div>
-                    <hr/>
-                    <div class="row startup-row">
-                        {{[Product Tagline]}}
-                    </div>
-                    {{#if Founders}}
-                    <div class="row startup-row startup-label-header">
-                        <h4><strong>Founders</strong></h4>
-                        {{Founders}}
-                    </div>
-                    {{/if}}                    
-                                        
-                    {{#if Status}}
-                    <div class="row startup-row startup-label-header">
-                        <h4><strong>Status</strong></h4>
-                        {{Status}}
-                    </div>
-                    {{/if}}
-                    <div class="row startup-row">
-                        <a href="{{[Website URL]}}">Visit Website</a>
-                    </div>
-
-                    {{#if Funding}}
-                    <div id="funding" class="startup-row startup-label-header">
-                        <h4><strong>Funding</strong></h4>
-                        {{Funding}}
-                    </div>
-                    {{/if}}
-
-
-
-
-                </div>
-            </div>
-        </div>
-
-    </script>
 
     <script id="startup-template" type="text/x-handlebars-template">
         <div class="box">
@@ -185,6 +106,99 @@
         </div>
     </script>
 
+    <div ng-app="startupsnepal">
+        <div ng-view>
 
+        </div>
+    </div>
+
+    <script>
+        var startupsNepalApp = angular.module('startupsnepal', ['ngRoute']);
+
+        startupsNepalApp.config(['$routeProvider',
+          function ($routeProvider) {
+              $routeProvider.
+                when('/', {
+                    templateUrl: 'templates/list.html',
+                    controller: 'StartupsListingController'
+                }).
+                when('/startup/:name', {
+                    templateUrl: 'templates/startup.html',
+                    controller: 'StartupController'
+                }).
+                otherwise({
+                    redirectTo: '/'
+                });
+          }]);
+
+        startupsNepalApp.factory('startupsNepalCache', function ($cacheFactory) {
+            return $cacheFactory('allStartups');
+        });
+            
+        startupsNepalApp.controller('StartupController', function ($scope, $routeParams, startupsNepalCache) {
+            function findStartupByName(haystack, needle) {
+                var matches =  haystack.filter(function (obj) {
+                    // coerce both obj.id and id to numbers 
+                    // for val & type comparison
+                    return obj["Product Name"].toLowerCase().indexOf(needle.toLowerCase()) != -1;
+                });
+                return matches[0];
+            }
+
+            var cache = startupsNepalCache.get("allStartups");
+
+            if (cache) {
+                $scope.startup = findStartupByName(cache, $routeParams.name.replace("_", " "));
+            } else {
+                Tabletop.init({
+                    key: spreadsheet_key,
+                    callback: showStartups,
+                    simpleSheet: true
+                });
+            }
+
+            
+
+            function showStartups(data) {
+                var allStartups = arrange(data);
+                startupsNepalCache.put("startups", allStartups);
+                var currentStartup = $routeParams.name.replace("_", " ");
+                $scope.startup = findStartupByName(allStartups, currentStartup);
+                $scope.$apply();
+            }
+        });
+
+       
+
+        startupsNepalApp.controller('StartupsListingController', function ($scope, startupsNepalCache) {
+            $scope.urlFriendlyName = function (name) {
+                return name.replace(" ", "_");
+            }
+
+            var cache = startupsNepalCache.get('allStartups');
+
+            if (cache) {
+                $scope.startups = cache;
+            } else {
+                Tabletop.init({
+                    key: spreadsheet_key,
+                    callback: showStartups,
+                    simpleSheet: true
+                });
+            }
+               
+
+            function showStartups(data) {
+                var allStartups = arrange(data);
+                startupsNepalCache.put("allStartups", allStartups);
+                $scope.startups = allStartups;
+                $scope.$apply();
+            }
+        });
+        
+    </script>
 </body>
+
+
+
 </html>
