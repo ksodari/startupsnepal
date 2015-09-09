@@ -86,7 +86,7 @@
         <div class="container">
             
             <div class="center-align column-wrap">
-                <img src="images/startupsnepal_logo.png" height="140" />
+                <img src="images/startupsnepal_logo.png" height="140" onclick="document.location='/'" style="cursor:pointer" />
                 <h1>Nepali Startups Directory</h1>
                 <a id="add-startup-link" href="http://goo.gl/forms/pcQQAMnXoO">Add Your Startup Here</a>
             </div>
@@ -95,11 +95,22 @@
         </div>
     </div>
 
-    <div ng-app="startupsnepal">
+    <div class="main" ng-app="startupsnepal">
         <div ng-view>
 
         </div>
     </div>
+
+    <footer class="container">
+        <div class="row">
+            <a href="/">Home</a>
+            <a href="#about">About</a>
+        </div>
+        <div class="row">
+            &copy; 2015 startupsinnepal.com | All Rights Reserved
+        </div>
+        
+    </footer>
 
     <script>
         var startupsNepalApp = angular.module('startupsnepal', ['ngRoute']);
@@ -114,6 +125,9 @@
                 when('/startup/:name', {
                     templateUrl: 'templates/startup.html',
                     controller: 'StartupController'
+                }).
+                when('/about', {
+                    templateUrl: 'templates/about.html'
                 }).
                 otherwise({
                     redirectTo: '/'
