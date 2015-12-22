@@ -46,6 +46,11 @@ img {
     margin-bottom: 20px;
 }
 
+.loading {
+    display:block;
+    margin:50px auto;
+}
+
 .panel-heading {
     background-color: #819cca!important;
 }
@@ -92,7 +97,7 @@ img {
     position: absolute;
      bottom : 30px;
     right: 35px;
-  
+
     height: 45px;
     background: #f06989;
 }

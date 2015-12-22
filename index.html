@@ -137,6 +137,8 @@
         </div>
     </div>
 
+    <img class="loading" src="images/loading.gif" />
+
     <div class="main" ng-app="startupsnepal">
         <div ng-view>
 
@@ -211,6 +213,7 @@
 
 
             function showStartups(data) {
+                $(".loading").hide();
                 var allStartups = arrange(data);
                 startupsNepalCache.put("startups", allStartups);
                 var currentStartup = $routeParams.name.split("_").join(" ");
