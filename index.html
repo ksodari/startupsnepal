@@ -82,16 +82,59 @@
     </script>
 </head>
 <body>
+    <div class="parewa-nav">
+        <ul>
+            <li><a rel="nofollow" href="http://startupsinnepal.com" class="active">Startups</a></li>
+            <li><a rel="nofollow" href="http://ngosinnepal.com">NGOs</a></li>
+        </ul>
+        <div class="clear" />
+        <style>
+            .parewa-nav {
+                margin-left: -5px;
+                padding: 10px 0;
+                border-top: 1px solid #AAA;
+                border-bottom: 1px solid #AAA;
+            }
+
+
+            .clear {
+                clear: both;
+            }
+
+            .parewa-nav ul li {
+                list-style: none;
+                float: left;
+                font-family: "Open Sans", sans-serif;
+                margin-right: 10px;
+                padding: 2px 2px;
+            }
+
+                .parewa-nav ul li a {
+                    display: block;
+                    padding: 2px;
+                    color: #777;
+                    text-decoration: underline;
+                }
+
+                    .parewa-nav ul li a.active {
+                        font-weight: bold;
+                        text-decoration: none;
+                        background: #DDD;
+                    }
+        </style>
+
+    </div>
+
     <div class="hero">
         <div class="container">
-            
+
             <div class="center-align column-wrap">
                 <img src="images/startupsnepal_logo.png" height="140" onclick="document.location='/'" style="cursor:pointer" />
                 <h1>Nepali Startups Directory</h1>
                 <a id="add-startup-link" href="http://goo.gl/forms/pcQQAMnXoO">Add Your Startup Here</a>
             </div>
-            
-           
+
+
         </div>
     </div>
 
@@ -101,6 +144,9 @@
         </div>
     </div>
 
+
+
+<!--
     <footer class="container">
         <div class="row">
             <a href="/">Home</a>
@@ -109,8 +155,8 @@
         <div class="row">
             &copy; 2015 startupsinnepal.com | All Rights Reserved
         </div>
-        
-    </footer>
+
+    </footer> -->
 
     <script>
         var startupsNepalApp = angular.module('startupsnepal', ['ngRoute']);
@@ -137,11 +183,11 @@
         startupsNepalApp.factory('startupsNepalCache', function ($cacheFactory) {
             return $cacheFactory('allStartups');
         });
-            
+
         startupsNepalApp.controller('StartupController', function ($scope, $routeParams, startupsNepalCache) {
             function findStartupByName(haystack, needle) {
                 var matches =  haystack.filter(function (obj) {
-                    // coerce both obj.id and id to numbers 
+                    // coerce both obj.id and id to numbers
                     // for val & type comparison
                     return obj["Product Name"].toLowerCase().indexOf(needle.toLowerCase()) != -1;
                 });
@@ -163,7 +209,7 @@
                 });
             }
 
-            
+
 
             function showStartups(data) {
                 var allStartups = arrange(data);
@@ -178,7 +224,7 @@
             }
         });
 
-       
+
 
         startupsNepalApp.controller('StartupsListingController', function ($scope, startupsNepalCache) {
             $scope.redirectTo = redirectTo;
@@ -196,7 +242,7 @@
                     simpleSheet: true
                 });
             }
-               
+
 
             function showStartups(data) {
                 var allStartups = arrange(data);
@@ -205,12 +251,12 @@
                 $scope.$apply();
             }
         });
-        
+
     </script>
 
     <script>
 
-        
+
     </script>
 </body>
 
