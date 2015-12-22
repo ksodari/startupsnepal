@@ -213,7 +213,7 @@
 
 
             function showStartups(data) {
-                $(".loading").hide();
+                console.log("Getting all the data");
                 var allStartups = arrange(data);
                 startupsNepalCache.put("startups", allStartups);
                 var currentStartup = $routeParams.name.split("_").join(" ");
@@ -235,9 +235,13 @@
 
             var cache = startupsNepalCache.get('allStartups');
 
+
+
             if (cache) {
                 $scope.startups = cache;
             } else {
+               
+
                 Tabletop.init({
                     key: spreadsheet_key,
                     callback: showStartups,
@@ -247,6 +251,7 @@
 
 
             function showStartups(data) {
+                $(".loading").hide();
                 var allStartups = arrange(data);
                 startupsNepalCache.put("allStartups", allStartups);
                 $scope.startups = allStartups;
