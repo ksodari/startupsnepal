@@ -18,6 +18,10 @@ footer {
     min-height:100vh;
 }
 
+.promotion {
+  margin-bottom: 15px;
+}
+
 img {
     max-width: 100%;
 }
@@ -168,8 +172,8 @@ and (max-width : 360px) {
 	transform: rotateY(-180deg);
 }
 
-/* 
-	Some vertical flip updates 
+/*
+	Some vertical flip updates
 */
 .vertical.flip-container {
 	position: relative;
